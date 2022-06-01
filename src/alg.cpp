@@ -16,6 +16,9 @@ int countPairs2(int* arr, int len, int value) {
         if (arr[i] < 0) {
             i++;
         }
+        if (arr[i] == value / 2) {
+            coup += 1;
+        }
         if (arr[i] > value) {
             return coup;
         }
@@ -59,8 +62,11 @@ int binSearch(int* arr, int len, int value, int kr) {
 int countPairs3(int* arr, int len, int value) {
     int coup = 0;
     for (int i = 0; i < len - 1; i++) {
-        if (i < 0) {
+        if (arr[i] < 0) {
             i++;
+        }
+        if (arr[i] == value / 2) {
+            coup += 1;
         }
         if (i > value) {
             return coup;
