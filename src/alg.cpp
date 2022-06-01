@@ -33,7 +33,7 @@ int countPairs2(int* arr, int len, int value) {
 int binSearch(int* arr, int len, int value, int kr) {
     int par = 0;
     int beg = kr, end = len - 1;
-    while (beg < end) {
+    while (beg < end - 1) {
         int mid = (beg + (end + 1)) / 2;
         if (arr[mid] == value) {
             par += 1;
