@@ -49,7 +49,8 @@ int countPairs3(int* arr, int len, int value) {
                         }
                     }
                     break;
-                } else if (arr[ser] > value - arr[i]) {
+                } 
+                if (arr[ser] > value - arr[i]) {
                     kon = ser - 1;
                 } else {
                     nach = ser + 1;
