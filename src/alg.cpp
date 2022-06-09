@@ -38,16 +38,21 @@ int countPairs3(int* arr, int len, int value) {
                 int ser = (nach + kon) / 2;
                 if (arr[ser] == value - arr[i]) {
                     count += 1;
-                    for (int j = ser + 1; arr[j] == arr[ser]; j++) {
-                        count += 1;
+                    for (int j = ser + 1; arr[j] + arr[i] == value; j++) {
+                        if (j < kon) {
+                            count += 1;
+                        }
                     }
-                    for (int h = ser - 1; arr[h] == arr[ser]; h--) {
-                        count += 1;
+                    for (int h = ser - 1; arr[h] + arr[i] == value; h--) {
+                        if (h >= nach) {
+                            count += 1;
+                        }
                     }
                     break;
                 } else if (arr[ser] > value - arr[i]) {
                     kon = ser - 1;
-                } else {
+                }
+                else {
                     nach = ser + 1;
                 }
             }
