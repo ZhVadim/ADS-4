@@ -27,35 +27,30 @@ int countPairs2(int* arr, int len, int value) {
     }
     return count;
 }
-int countPairs3(int* arr, int len, int value) {
+int countPairs3(int *arr, int len, int value) {
     int count = 0;
-    for (int i = 0; i < len - 1; i++) {
-        if (arr[i] >= value / 2) {
-            return count;
-        } else if (arr[i] < value / 2) {
-            int nach = i, kon = len - 1;
-            while (nach < kon - 1) {
-                int ser = (nach + kon) / 2;
-                if (arr[ser] == value - arr[i]) {
+    for (int i = 0; i < len-1; i++) {
+        int nach = i; int kon = len;
+        while (left < right - 1) {
+            int sr = (nach + kon) / 2;
+            if (arr[i] + arr[sr] == value) {
+                count += 1;
+                int b = sr + 1;
+                while ((arr[i] + arr[b] == value) && (b < kon)) {
                     count += 1;
-                    for (int j = ser + 1; arr[j] + arr[i] == value; j++) {
-                        if (j < kon) {
-                            count += 1;
-                        }
-                    }
-                    for (int h = ser - 1; arr[h] + arr[i] == value; h--) {
-                        if (h >= nach) {
-                            count += 1;
-                        }
-                    }
-                    break;
-                } 
-                if (arr[ser] > value - arr[i]) {
-                    kon = ser - 1;
-                } else {
-                    nach = ser + 1;
+                    b += 1;
                 }
-            }
+                b = sr - 1;
+                while ((arr[i] + arr[b] == value) && (b > nach)) {
+                    count += 1;
+                    b -= 1;
+        }
+                break;
+    }
+            if (arr[i] + arr[sr] > value)
+                kon = sr;
+            else
+                nach = sr;
         }
     }
     return count;
