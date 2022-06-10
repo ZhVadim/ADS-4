@@ -31,7 +31,7 @@ int countPairs3(int *arr, int len, int value) {
     int count = 0;
     for (int i = 0; i < len-1; i++) {
         int nach = i; int kon = len;
-        while (left < right - 1) {
+        while (nach < kon - 1) {
             int sr = (nach + kon) / 2;
             if (arr[i] + arr[sr] == value) {
                 count += 1;
